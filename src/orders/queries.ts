@@ -53,6 +53,7 @@ export const orderListQuery = gql`
     }
   }
 `;
+
 export const orderDraftListQuery = gql`
   query OrderDraftList(
     $first: Int

@@ -5,6 +5,8 @@ import { PermissionEnum } from "@dashboard/graphql";
 import { Box } from "@saleor/macaw-ui-next";
 import React from "react";
 
+import Check from "./FancyBoard/Check.js";
+import FancyBoard from "./FancyBoard/FancyBoard";
 import { WelcomePageOnboarding } from "./WelcomePageOnboarding";
 import { WelcomePageSidebar } from "./WelcomePageSidebar";
 import { WelcomePageTilesContainer } from "./WelcomePageTilesContainer";
@@ -43,8 +45,13 @@ export const WelcomePage = () => {
           desktop: "2",
         }}
       >
-        <WelcomePageOnboarding />
-        <WelcomePageTilesContainer />
+        {/* <WelcomePageOnboarding />
+        <WelcomePageTilesContainer /> */}
+
+        <Check />
+        <FancyBoard />
+
+        <h1>Can i show something here? Yes you can show a fancy dashboard here</h1>
       </Box>
       <Box gridColumn="1">
         <WelcomePageSidebar
