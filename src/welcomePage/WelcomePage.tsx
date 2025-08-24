@@ -7,9 +7,7 @@ import React from "react";
 
 import Check from "./FancyBoard/Check.js";
 import FancyBoard from "./FancyBoard/FancyBoard";
-import { WelcomePageOnboarding } from "./WelcomePageOnboarding";
 import { WelcomePageSidebar } from "./WelcomePageSidebar";
-import { WelcomePageTilesContainer } from "./WelcomePageTilesContainer";
 import { WelcomePageTitle } from "./WelcomePageTitle";
 
 export const WelcomePage = () => {
@@ -45,9 +43,6 @@ export const WelcomePage = () => {
           desktop: "2",
         }}
       >
-        {/* <WelcomePageOnboarding />
-        <WelcomePageTilesContainer /> */}
-
         <Check />
         <FancyBoard />
 
