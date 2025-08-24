@@ -23,10 +23,10 @@ const FancyBoard = () => {
 
   const orders = data?.orders?.edges ?? [];
 
-  const chartData = orders.map(({ node }) => ({
+  const chartData = orders.map(({ node }: { node: any }) => ({
     orderNumber: node.number,
     total: node.total.gross.amount,
-    date: new Date(node.created).toLocaleDateString(), // optional
+    date: new Date(node.created).toLocaleDateString(),
   }));
 
   return (
