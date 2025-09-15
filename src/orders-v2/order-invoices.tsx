@@ -1,7 +1,6 @@
 import { InvoiceFragment } from "@dashboard/graphql";
 import { Box, Button, PropsWithBox, sprinkles, Text } from "@saleor/macaw-ui-next";
 import { Send } from "lucide-react";
-import React from "react";
 import { useIntl } from "react-intl";
 
 type Props = PropsWithBox<{
@@ -29,7 +28,10 @@ export const OrderInvoices = ({ invoices }: Props) => {
           {invoices.map(invoice => (
             <Box
               key={invoice.id}
-              onClick={() => alert("Invoice sent clicked")}
+              onClick={() => {
+                // TODO: implement send invoice functionality
+                alert("Invoice sent clicked");
+              }}
               display="grid"
               __gridTemplateColumns="1fr auto auto"
               placeItems="center"

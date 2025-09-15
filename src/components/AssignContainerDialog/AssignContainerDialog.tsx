@@ -6,7 +6,8 @@ import TableRowLink from "@dashboard/components/TableRowLink";
 import useSearchQuery from "@dashboard/hooks/useSearchQuery";
 import { DialogProps, FetchMoreProps, Node } from "@dashboard/types";
 import { CircularProgress, TableBody, TableCell, TextField } from "@material-ui/core";
-import React from "react";
+import { Text } from "@saleor/macaw-ui-next";
+import { useState } from "react";
 
 import BackButton from "../BackButton";
 import Checkbox from "../Checkbox";
@@ -28,6 +29,7 @@ export interface AssignContainerDialogProps extends FetchMoreProps, DialogProps 
   labels: Labels;
   onFetch: (value: string) => void;
   onSubmit: (data: Container[]) => void;
+  emptyMessage?: string;
 }
 
 function handleContainerAssign(
@@ -58,10 +60,11 @@ const AssignContainerDialog = (props: AssignContainerDialogProps) => {
     onFetch,
     onFetchMore,
     onSubmit,
+    emptyMessage,
   } = props;
   const classes = useStyles(props);
   const [query, onQueryChange, queryReset] = useSearchQuery(onFetch);
-  const [selectedContainers, setSelectedContainers] = React.useState<Container[]>([]);
+  const [selectedContainers, setSelectedContainers] = useState<Container[]>([]);
   const handleSubmit = () => onSubmit(selectedContainers);
   const handleClose = () => {
     queryReset();
@@ -96,6 +99,11 @@ const AssignContainerDialog = (props: AssignContainerDialogProps) => {
         >
           <ResponsiveTable>
             <TableBody>
+              {!loading && (containers?.length ?? 0) === 0 && (
+                <Text>
+                  <Text>{emptyMessage ?? "No objects found"}</Text>
+                </Text>
+              )}
               {containers?.map(container => {
                 const isSelected = !!selectedContainers.find(
                   selectedContainer => selectedContainer.id === container.id,

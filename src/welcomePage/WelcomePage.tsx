@@ -3,7 +3,6 @@ import useAppChannel from "@dashboard/components/AppLayout/AppChannelContext";
 import { hasPermissions } from "@dashboard/components/RequirePermissions";
 import { PermissionEnum } from "@dashboard/graphql";
 import { Box } from "@saleor/macaw-ui-next";
-import React from "react";
 
 import Check from "./FancyBoard/Check.js";
 import FancyBoard from "./FancyBoard/FancyBoard";

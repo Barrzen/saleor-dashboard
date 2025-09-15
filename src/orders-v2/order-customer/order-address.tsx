@@ -1,7 +1,6 @@
 import { AddressFragment } from "@dashboard/graphql";
 import { useClipboard } from "@dashboard/hooks/useClipboard";
 import { Box, BoxProps, Button, Text } from "@saleor/macaw-ui-next";
-import React from "react";
 import { useIntl } from "react-intl";
 
 import { ClipboardCopyIcon } from "../clipboard-copy-icon";
@@ -31,7 +30,10 @@ export const OrderAddress = ({ address, type, ...props }: Props) => {
         </Text>
         <Button
           variant="secondary"
-          onClick={() => alert("Edit functionality not implemented yet.")}
+          onClick={() => {
+            // TODO: implement edit address functionality
+            alert("Edit functionality not implemented yet.");
+          }}
         >
           {intl.formatMessage({
             defaultMessage: "Edit",

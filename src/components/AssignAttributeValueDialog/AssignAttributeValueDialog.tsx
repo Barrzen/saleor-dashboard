@@ -5,7 +5,6 @@ import {
   SearchPagesQuery,
 } from "@dashboard/graphql";
 import { RelayToFlat } from "@dashboard/types";
-import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import AssignCategoryDialog from "../AssignCategoryDialog";
@@ -41,6 +40,11 @@ const pagesMessages = defineMessages({
     id: "Z768vg",
     defaultMessage: "Search by model name, etc...",
     description: "placeholder",
+  },
+  noPagesFound: {
+    id: "BOYzu+",
+    defaultMessage: "No models found",
+    description: "search results",
   },
 });
 
@@ -78,6 +82,7 @@ const AssignAttributeValueDialog = ({
               name: page.title,
             })) ?? []
           }
+          emptyMessage={intl.formatMessage(pagesMessages.noPagesFound)}
           labels={{
             confirmBtn: intl.formatMessage(pagesMessages.confirmBtn),
             label: intl.formatMessage(pagesMessages.searchLabel),

@@ -4,7 +4,8 @@ import { OrderRefundDataQuery } from "@dashboard/graphql";
 import useForm, { CommonUseFormResultWithHandlers, SubmitPromise } from "@dashboard/hooks/useForm";
 import useFormset, { FormsetChange, FormsetData } from "@dashboard/hooks/useFormset";
 import useHandleFormSubmit from "@dashboard/hooks/useHandleFormSubmit";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import * as React from "react";
 
 import { refundFulfilledStatuses } from "./OrderRefundPage";
 
@@ -55,7 +56,7 @@ interface OrderRefundFormProps {
 function getOrderRefundPageFormData(defaultType: OrderRefundType): OrderRefundData {
   return {
     amount: undefined,
-    amountCalculationMode: OrderRefundAmountCalculationMode.AUTOMATIC,
+    amountCalculationMode: OrderRefundAmountCalculationMode.NONE,
     refundShipmentCosts: false,
     type: defaultType,
   };

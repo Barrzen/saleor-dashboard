@@ -32,11 +32,16 @@ import { OrderLineDiscountProvider } from "@dashboard/products/components/OrderD
 import { useOrderVariantSearch } from "@dashboard/searches/useOrderVariantSearch";
 import { PartialMutationProviderOutput } from "@dashboard/types";
 import { mapEdgesToItems } from "@dashboard/utils/maps";
-import React from "react";
+import { useState } from "react";
 import { useIntl } from "react-intl";
 
 import { customerUrl } from "../../../../customers/urls";
-import { extractMutationErrors, getMutationState, getStringOrPlaceholder } from "../../../../misc";
+import {
+  extractMutationErrors,
+  getById,
+  getMutationState,
+  getStringOrPlaceholder,
+} from "../../../../misc";
 import { productUrl } from "../../../../products/urls";
 import OrderAddressFields from "../../../components/OrderAddressFields/OrderAddressFields";
 import OrderCancelDialog from "../../../components/OrderCancelDialog";
@@ -160,7 +165,7 @@ export const OrderUnconfirmedDetails = ({
       input: data,
     });
   const intl = useIntl();
-  const [transactionReference, setTransactionReference] = React.useState("");
+  const [transactionReference, setTransactionReference] = useState("");
   const errors = orderUpdate.opts.data?.orderUpdate.errors || [];
 
   const hasOrderFulfillmentsFulFilled = order?.fulfillments.some(
@@ -414,6 +419,7 @@ export const OrderUnconfirmedDetails = ({
         errors={orderFulfillmentCancel.opts.data?.orderFulfillmentCancel.errors || []}
         open={params.action === "cancel-fulfillment"}
         warehouses={mapEdgesToItems(warehouses?.data?.warehouses)}
+        fulfillmentStatus={order?.fulfillments.find(getById(params.id))?.status}
         onConfirm={variables =>
           orderFulfillmentCancel.mutate({
             id: params.id,

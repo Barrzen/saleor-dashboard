@@ -1,6 +1,5 @@
 import { JobStatusEnum } from "@dashboard/graphql/types.generated";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
 
 import { OrderFixture } from "../fixtures/order-fixture";
 import { OrderDetailsPage } from "../order-detail-page";
@@ -59,6 +58,25 @@ export const FulfilledWithCustomerNote: Story = {
   },
 };
 
+export const FulfilledWithMultipleFulfillments: Story = {
+  args: {
+    order: OrderFixture.fulfilled()
+      .withRefundedFulfillment()
+      .withReplacedFulfillment()
+      .withReturnedFulfillment()
+      .withWaitingForApprovalFulfillment()
+      .withCanceledFulfillment()
+      .withRefundedAndReturnedFulfillment()
+      .build(),
+  },
+};
+
+export const FulfilledWithGiftCards: Story = {
+  args: {
+    order: OrderFixture.fulfilled().withGiftCards().build(),
+  },
+};
+
 export const Unconfirmed: Story = {
   args: {
     order: OrderFixture.unconfirmed().build(),
@@ -74,5 +92,11 @@ export const UnconfirmedWithInvoices: Story = {
 export const UnconfirmedWithCustomerNote: Story = {
   args: {
     order: OrderFixture.unconfirmed().withCustomerNote("This is a customer note.").build(),
+  },
+};
+
+export const Unfulfilled: Story = {
+  args: {
+    order: OrderFixture.unfulfilled().build(),
   },
 };
